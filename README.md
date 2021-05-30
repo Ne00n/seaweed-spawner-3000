@@ -9,15 +9,6 @@ none
 **Prepare**<br />
 Rename hosts.example.json to hosts.json and fill it up
 
-**Examples**<br />
-
-/etc/hosts<br />
-```
-bla.bla.bla.bla    Server1
-bla.bla.bla.bla    Server2
-bla.bla.bla.bla    Server3
-```
-
 **Usage**<br />
 Builds or Updates the SeaweedFS cluster<br />
 ```

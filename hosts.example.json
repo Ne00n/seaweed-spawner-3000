@@ -1,5 +1,5 @@
-[
-"Server1",
-"Server2",
-"Server3"
-]
+{
+ "Server1":{"dc":1,"vxlan":"10.0.251.1","ip":"xxx.xxx.xxx.xxx"},
+ "Server2":{"dc":1,"vxlan":"10.0.251.2","ip":"xxx.xxx.xxx.xxx"},
+ "Server3":{"dc":1,"vxlan":"10.0.251.3","ip":"xxx.xxx.xxx.xxx"}
+}
