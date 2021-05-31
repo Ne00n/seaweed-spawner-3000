@@ -11,5 +11,7 @@ elif sys.argv[1] == "build":
     seaweed.run()
 elif sys.argv[1] == "shutdown":
     seaweed.shutdown()
+elif sys.argv[1] == "terminate":
+    seaweed.terminate()
 elif sys.argv[1] == "clean":
     seaweed.clean()

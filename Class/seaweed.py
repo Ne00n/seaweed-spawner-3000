@@ -17,7 +17,7 @@ class SeaweedFS:
         else:
             subprocess.run(cmd)
 
-    def prepare(self,server,data,delete=False):
+    def prepare(self,server,data,delete=False,terminate=False):
         print("---",server,"Preparing","---")
         #Fetch old configs
         files = self.cmd(data['ip'],'ls /etc/systemd/system/',True)
@@ -28,10 +28,16 @@ class SeaweedFS:
             print("Stopping "+service)
             self.cmd(data['ip'],'systemctl stop '+service+' && systemctl disable '+service,False)
             if delete: self.cmd(data['ip'],'rm /etc/systemd/system/'+service,False)
+        if terminate: self.cmd(data['ip'],'userdel -r seaweedfs',False)
+
 
     def clean(self):
         for server,data in self.targets['servers'].items():
             self.prepare(server,data,True)
+
+    def terminate(self):
+        for server,data in self.targets['servers'].items():
+            self.prepare(server,data,True,True)
 
     def shutdown(self):
         for server,data in self.targets['servers'].items():

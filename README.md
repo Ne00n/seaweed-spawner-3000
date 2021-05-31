@@ -24,3 +24,8 @@ python3 seaweed.py shutdown
 Removes all SeaweedFS instances<br />
 ```
 python3 seaweed.py clean
+```
+Terminates all SeaweedFS instances + data<br />
+```
+python3 seaweed.py terminate
+```
