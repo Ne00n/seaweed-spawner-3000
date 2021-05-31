@@ -1,5 +1,5 @@
 {
-  "replica":110,
+  "replica":001,
   "type":"arm64",
   "servers":{
    "Server1":{"dc":"dc1","rack":"rack1","vxlan":"10.0.251.1","ip":"xxx.xxx.xxx.xxx"},
