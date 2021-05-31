@@ -3,6 +3,9 @@
 I better replicate mah storage expansion for: https://github.com/Ne00n/pipe-builder-3000/ </br>
 Configures SeaweedFS on all nodes (master/volume/filer) including HA
 
+You need at least 3 nodes<br />
+Tested on Debian/Ubuntu with systemd.
+
 **Dependencies**<br />
 none
 
