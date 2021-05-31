@@ -7,7 +7,7 @@ class Templator:
             count = count +1
         return peers
 
-    def genSystemd(self,type,ip,port,dirType,peerType,peerPort,targets):
+    def genSystemd(self,type,ip,port,dirType,peerType,peerPort,targets,dc=False,rack=False):
         template = '''
         [Unit]
         Description=SeaweedFS '''+type+'''
@@ -25,7 +25,7 @@ class Templator:
         elif type == "filer":
             template += '/usr/local/bin/weed '+type+' -ip='+ip+' -ip.bind='+ip+' -port='+str(port)+' -'+peerType+'='+self.genPeers(peerPort,targets)
         else:
-            template += '/usr/local/bin/weed '+type+' -ip='+ip+' -ip.bind='+ip+' -port='+str(port)+' -'+dirType+'=/home/seaweedfs/'+type+' -'+peerType+'='+self.genPeers(peerPort,targets)
+            template += '/usr/local/bin/weed '+type+' -ip='+ip+' -ip.bind='+ip+' -port='+str(port)+' -'+dirType+'=/home/seaweedfs/'+type+' -dataCenter='+dc+' -rack='+rack+' -'+peerType+'='+self.genPeers(peerPort,targets)
 
         template += '''
         WorkingDirectory=/home/seaweedfs/
