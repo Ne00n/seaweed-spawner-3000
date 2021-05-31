@@ -27,7 +27,7 @@ class SeaweedFS:
         for service in parsed:
             print(server,"Stopping "+service)
             self.cmd(data['ip'],'systemctl stop '+service+' && systemctl disable '+service,False)
-        if delete: self.cmd(data['ip'],'rm /etc/systemd/system/'+service,False)
+            if delete: self.cmd(data['ip'],'rm /etc/systemd/system/'+service,False)
 
     def clean(self):
         for server,data in self.targets['servers'].items():
@@ -44,11 +44,15 @@ class SeaweedFS:
         self.cmd(data['ip'],'cd /tmp/; wget '+url+"; tar xvf linux_"+type+".tar.gz; mv weed /usr/local/bin/; rm linux_"+type+".tar.gz;",False)
 
         print(server,"Adding non privileged user for SeaweedFS")
-        self.cmd(data['ip'],'getent passwd seaweedfs &>/dev/null && echo "Skipping" ||  mkdir /home/seaweedfs/ && useradd seaweedfs -r -d /home/seaweedfs -s /bin/false && chown -R seaweedfs:seaweedfs /home/seaweedfs/ && chmod -R 700 /home/seaweedfs/',False)
+        self.cmd(data['ip'],'getent passwd seaweedfs &>/dev/null && echo "Skipping" ||  mkdir /home/seaweedfs/ && mkdir /home/seaweedfs/master && mkdir /home/seaweedfs/volume && useradd seaweedfs -r -d /home/seaweedfs -s /bin/false && chown -R seaweedfs:seaweedfs /home/seaweedfs/ && chmod -R 700 /home/seaweedfs/',False)
 
         print(server,'Creating & Starting SeaweedFS master systemd service')
         config = T.genSystemd('master',data['vxlan'],9333,'mdir','peers',9333,self.targets)
         self.cmd(data['ip'],'echo "'+config+'" > /etc/systemd/system/SeaweedFSmaster.service && systemctl enable SeaweedFSmaster && systemctl start SeaweedFSmaster',False)
+
+        print(server,'Creating & Starting SeaweedFS volume systemd service')
+        config = T.genSystemd('volume',data['vxlan'],9433,'dir','mserver',9333,self.targets)
+        self.cmd(data['ip'],'echo "'+config+'" > /etc/systemd/system/SeaweedFSvolume.service && systemctl enable SeaweedFSvolume && systemctl start SeaweedFSvolume',False)
 
     def run(self):
         print("Launching")
