@@ -23,7 +23,7 @@ class Templator:
         if type == "master":
             template += '/usr/local/bin/weed '+type+' -defaultReplication='+str(targets['replica'])+' -ip='+ip+' -ip.bind='+ip+' -port='+str(port)+' -'+dirType+'=/home/seaweedfs/'+type+' -'+peerType+'='+self.genPeers(peerPort,targets)
         elif type == "filer":
-            template += '/usr/local/bin/weed '+type+' -ip='+ip+' -ip.bind='+ip+' -port='+str(port)+' -'+peerType+'='+self.genPeers(peerPort,targets)
+            template += '/usr/local/bin/weed '+type+' -ip='+ip+' -ip.bind='+ip+' -port='+str(port)+' -'+peerType+'='+self.genPeers(peerPort,targets)+' -peers='+self.genPeers(port,targets)
         else:
             template += '/usr/local/bin/weed '+type+' -ip='+ip+' -ip.bind='+ip+' -port='+str(port)+' -'+dirType+'=/home/seaweedfs/'+type+' -dataCenter='+dc+' -rack='+rack+' -'+peerType+'='+self.genPeers(peerPort,targets)
 
