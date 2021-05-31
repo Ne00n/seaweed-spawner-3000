@@ -54,6 +54,10 @@ class SeaweedFS:
         config = T.genSystemd('volume',data['vxlan'],9433,'dir','mserver',9333,self.targets)
         self.cmd(data['ip'],'echo "'+config+'" > /etc/systemd/system/SeaweedFSvolume.service && systemctl enable SeaweedFSvolume && systemctl start SeaweedFSvolume',False)
 
+        print(server,'Creating & Starting SeaweedFS filer systemd service')
+        config = T.genSystemd('filer',data['vxlan'],9533,'dir','master',9333,self.targets)
+        self.cmd(data['ip'],'echo "'+config+'" > /etc/systemd/system/SeaweedFSfiler.service && systemctl enable SeaweedFSfiler && systemctl start SeaweedFSfiler',False)
+
     def run(self):
         print("Launching")
         time.sleep(3)

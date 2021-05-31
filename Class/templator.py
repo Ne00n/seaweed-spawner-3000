@@ -18,7 +18,14 @@ class Templator:
         User=seaweedfs
         Group=seaweedfs
 
-        ExecStart=/usr/local/bin/weed '''+type+''' -ip='''+ip+''' -ip.bind='''+ip+''' -port='''+str(port)+''' -'''+dirType+'''=/home/seaweedfs/'''+type+''' -'''+peerType+'''='''+self.genPeers(peerPort,targets)+'''
+        ExecStart='''
+
+        if type == "filer":
+            template += '/usr/local/bin/weed '+type+' -ip='+ip+' -ip.bind='+ip+' -port='+str(port)+' -'+peerType+'='+self.genPeers(peerPort,targets)
+        else:
+            template += '/usr/local/bin/weed '+type+' -ip='+ip+' -ip.bind='+ip+' -port='+str(port)+' -'+dirType+'=/home/seaweedfs/'+type+' -'+peerType+'='+self.genPeers(peerPort,targets)
+
+        template += '''
         WorkingDirectory=/home/seaweedfs/
         SyslogIdentifier=seaweedfs-'''+type+'''
 
