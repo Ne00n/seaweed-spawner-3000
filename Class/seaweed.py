@@ -43,11 +43,11 @@ class SeaweedFS:
         for server,data in self.targets['servers'].items():
             self.prepare(server,data)
 
-    def execute(self,type,server,data):
+    def execute(self,server,data):
         T = Templator()
-        url = "https://github.com/chrislusf/seaweedfs/releases/download/2.49/linux_"+type+".tar.gz"
+        url = "https://github.com/chrislusf/seaweedfs/releases/download/"+self.targets['version']+"/linux_"+self.targets['type']+".tar.gz"
         print("Installing SeaweedFS")
-        self.cmd(data['ip'],'cd /tmp/; wget '+url+"; tar xvf linux_"+type+".tar.gz; mv weed /usr/local/bin/; rm linux_"+type+".tar.gz;",False)
+        self.cmd(data['ip'],'cd /tmp/; wget '+url+"; tar xvf linux_"+self.targets['type']+".tar.gz; mv weed /usr/local/bin/; rm linux_"+self.targets['type']+".tar.gz;",False)
 
         print("Adding non privileged user for SeaweedFS")
         self.cmd(data['ip'],'getent passwd seaweedfs &>/dev/null && echo "Skipping" ||  mkdir /home/seaweedfs/ && mkdir /home/seaweedfs/master && mkdir /home/seaweedfs/volume && useradd seaweedfs -r -d /home/seaweedfs -s /bin/false && chown -R seaweedfs:seaweedfs /home/seaweedfs/ && chmod -R 700 /home/seaweedfs/',False)
@@ -71,4 +71,4 @@ class SeaweedFS:
             #Prepare
             self.prepare(server,data)
             print("---",server,"Deploying","---")
-            self.execute(self.targets['type'],server,data)
+            self.execute(server,data)
