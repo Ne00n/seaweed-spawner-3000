@@ -53,15 +53,15 @@ class SeaweedFS:
         self.cmd(data['ip'],'getent passwd seaweedfs &>/dev/null && echo "Skipping" ||  mkdir /home/seaweedfs/ && mkdir /home/seaweedfs/master && mkdir /home/seaweedfs/volume && useradd seaweedfs -r -d /home/seaweedfs -s /bin/false && chown -R seaweedfs:seaweedfs /home/seaweedfs/ && chmod -R 700 /home/seaweedfs/',False)
 
         print('Creating & Starting SeaweedFS master systemd service')
-        config = T.genSystemd('master',data['vxlan'],9333,'mdir','peers',9333,self.targets)
+        config = T.genSystemd('master',data['vpn'],9333,'mdir','peers',9333,self.targets)
         self.cmd(data['ip'],'echo "'+config+'" > /etc/systemd/system/SeaweedFSmaster.service && systemctl enable SeaweedFSmaster && systemctl start SeaweedFSmaster',False)
 
         print('Creating & Starting SeaweedFS volume systemd service')
-        config = T.genSystemd('volume',data['vxlan'],9433,'dir','mserver',9333,self.targets,data['dc'],data['rack'])
+        config = T.genSystemd('volume',data['vpn'],9433,'dir','mserver',9333,self.targets,data['dc'],data['rack'])
         self.cmd(data['ip'],'echo "'+config+'" > /etc/systemd/system/SeaweedFSvolume.service && systemctl enable SeaweedFSvolume && systemctl start SeaweedFSvolume',False)
 
         print('Creating & Starting SeaweedFS filer systemd service')
-        config = T.genSystemd('filer',data['vxlan'],9533,'dir','master',9333,self.targets)
+        config = T.genSystemd('filer',data['vpn'],9533,'dir','master',9333,self.targets)
         self.cmd(data['ip'],'echo "'+config+'" > /etc/systemd/system/SeaweedFSfiler.service && systemctl enable SeaweedFSfiler && systemctl start SeaweedFSfiler',False)
 
     def run(self):
