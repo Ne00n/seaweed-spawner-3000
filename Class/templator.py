@@ -3,7 +3,7 @@ class Templator:
         peers,count = "",0
         for server,data in targets['servers'].items():
             if count > 0 and count != len(targets['servers']): peers += ","
-            peers += data['vxlan']+":"+str(port)
+            peers += data['vpn']+":"+str(port)
             count = count +1
         return peers
 
