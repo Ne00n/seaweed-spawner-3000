@@ -27,7 +27,7 @@ class SeaweedFS:
     def prepare(self,server,data,delete=False,terminate=False):
         print("---",server,"Preparing","---")
         #Fetch old configs
-        files = self.cmd(data['ip'],'ls /etc/systemd/system/',True)
+        files = self.cmd(data['ip'],'ls /etc/systemd/system/')[0]
         #Parse configs
         parsed = re.findall("^SeaweedFS[A-Za-z0-9.]+",files, re.MULTILINE)
         #Disable old configs
