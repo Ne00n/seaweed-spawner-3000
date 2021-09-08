@@ -45,9 +45,9 @@ class SeaweedFS:
 
     def execute(self,server,data):
         T = Templator()
-        url = "https://github.com/chrislusf/seaweedfs/releases/download/"+self.targets['version']+"/linux_"+self.targets['type']+".tar.gz"
+        url = "https://github.com/chrislusf/seaweedfs/releases/download/"+self.targets['version']+"/linux_"+data['type']+".tar.gz"
         print("Installing SeaweedFS")
-        self.cmd(data['ip'],'cd /tmp/; wget '+url+"; tar xvf linux_"+self.targets['type']+".tar.gz; mv weed /usr/local/bin/; rm linux_"+self.targets['type']+".tar.gz;",False)
+        self.cmd(data['ip'],'cd /tmp/; wget '+url+"; tar xvf linux_"+data['type']+".tar.gz; mv weed /usr/local/bin/; rm linux_"+data['type']+".tar.gz;",False)
 
         print("Adding non privileged user for SeaweedFS")
         self.cmd(data['ip'],'getent passwd seaweedfs &>/dev/null && echo "Skipping" ||  mkdir /home/seaweedfs/ && mkdir /home/seaweedfs/master && mkdir /home/seaweedfs/volume && useradd seaweedfs -r -d /home/seaweedfs -s /bin/false && chown -R seaweedfs:seaweedfs /home/seaweedfs/ && chmod -R 700 /home/seaweedfs/',False)
