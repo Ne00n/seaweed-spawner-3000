@@ -1,10 +1,9 @@
 {
   "replica":"001",
-  "version":"2.56",
-  "type":"arm64",
+  "version":"2.67",
   "servers":{
-   "Server1":{"dc":"dc1","rack":"rack1","vpn":"10.0.251.1","ip":"xxx.xxx.xxx.xxx"},
-   "Server2":{"dc":"dc1","rack":"rack1","vpn":"10.0.251.2","ip":"xxx.xxx.xxx.xxx"},
-   "Server3":{"dc":"dc1","rack":"rack1","vpn":"10.0.251.3","ip":"xxx.xxx.xxx.xxx"}
+   "Server1":{"dc":"dc1","rack":"rack1","type":"amd64","vpn":"10.0.251.1","ip":"xxx.xxx.xxx.xxx"},
+   "Server2":{"dc":"dc1","rack":"rack1","type":"amd64","vpn":"10.0.251.2","ip":"xxx.xxx.xxx.xxx"},
+   "Server3":{"dc":"dc1","rack":"rack1","type":"arm64","vpn":"10.0.251.3","ip":"xxx.xxx.xxx.xxx"}
   }
 }

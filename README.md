@@ -1,10 +1,10 @@
 # seaweed-spawner-3000
 
 I better replicate mah storage expansion for: https://github.com/Ne00n/pipe-builder-3000/ </br>
-Configures SeaweedFS on all nodes (master/volume/filer) including HA
+Configures [SeaweedFS](https://github.com/chrislusf/seaweedfs) on all nodes (master/volume/filer) including HA
 
 You need at least 3 nodes<br />
-Tested on Debian/Ubuntu with systemd.
+Tested on Debian 10 and Ubuntu 20.04 with systemd.
 
 **Dependencies**<br />
 none
