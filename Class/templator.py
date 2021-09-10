@@ -18,6 +18,7 @@ class Templator:
         User=seaweedfs
         Group=seaweedfs
 
+        ExecStartPre=/bin/sh -c 'until ping -c1 '''+ip+'''; do sleep 1; done;'
         ExecStart='''
 
         if type == "master":
