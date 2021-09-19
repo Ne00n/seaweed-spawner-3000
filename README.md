@@ -17,6 +17,10 @@ Builds or Updates the SeaweedFS cluster<br />
 ```
 python3 seaweed.py build
 ```
+After a build you can check the status
+```
+curl http://vpnip:9333/dir/status?pretty=y
+```
 Shutdown of all SeaweedFS instances<br />
 ```
 python3 seaweed.py shutdown
