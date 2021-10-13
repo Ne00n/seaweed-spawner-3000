@@ -12,11 +12,15 @@ class Templator:
         [Unit]
         Description=SeaweedFS '''+type+'''
         After=network.target
+        StartLimitBurst=3
+        StartLimitIntervalSec=200
 
         [Service]
         Type=simple
         User=seaweedfs
         Group=seaweedfs
+        Restart=on-failure
+        RestartSec=60s
 
         ExecStartPre=/bin/sh -c 'until ping -c1 '''+ip+'''; do sleep 1; done;'
         ExecStart='''
