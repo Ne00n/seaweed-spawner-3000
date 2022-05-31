@@ -1,6 +1,6 @@
 {
   "replica":"001",
-  "version":"2.71",
+  "version":"3.08",
   "servers":{
    "Server1":{"dc":"dc1","rack":"rack1","type":"amd64","vpn":"10.0.251.1","ip":"xxx.xxx.xxx.xxx"},
    "Server2":{"dc":"dc1","rack":"rack1","type":"amd64","vpn":"10.0.251.2","ip":"xxx.xxx.xxx.xxx"},
