@@ -4,7 +4,7 @@ I better replicate mah storage expansion for: https://github.com/Ne00n/pipe-buil
 Configures [SeaweedFS](https://github.com/chrislusf/seaweedfs) on all nodes (master/volume/filer) including HA
 
 You need at least 3 nodes<br />
-Tested on Debian 10 and Ubuntu 20.04 with systemd.
+Tested on Debian 10/11 and Ubuntu 20.04 with systemd.
 
 **Dependencies**<br />
 none
