@@ -29,7 +29,7 @@ class SeaweedFS:
         #Fetch old configs
         files = self.cmd(data['ip'],'ls /etc/systemd/system/')[0]
         #Parse configs
-        parsed = re.findall("^SeaweedFS[A-Za-z0-9.]+",files, re.MULTILINE)
+        parsed = re.findall("^SeaweedFS[A-Za-z0-9.-]+",files, re.MULTILINE)
         #Disable old configs
         for service in parsed:
             print("Stopping "+service)
