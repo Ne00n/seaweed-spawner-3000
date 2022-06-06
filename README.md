@@ -11,6 +11,7 @@ none
 
 **Prepare**<br />
 Rename hosts.example.json to hosts.json and fill it up
+<b>Make sure you have an odd number of nodes</b>
 
 **Usage**<br />
 Builds or Updates the SeaweedFS cluster<br />
