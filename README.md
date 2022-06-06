@@ -10,7 +10,7 @@ Tested on Debian 10 and Ubuntu 20.04 with systemd.
 none
 
 **Prepare**<br />
-Rename hosts.example.json to hosts.json and fill it up
+Rename hosts.example.json to hosts.json and fill it up<br>
 <b>Make sure you have an odd number of nodes</b>
 
 **Usage**<br />
