@@ -6,7 +6,7 @@ if len(sys.argv) > 2:
     config = sys.argv[2]
 seaweed = SeaweedFS(config)
 if len(sys.argv) == 1:
-    print("build, shutdown, clean")
+    print("build, shutdown, clean, terminate")
 elif sys.argv[1] == "build":
     seaweed.run()
 elif sys.argv[1] == "shutdown":

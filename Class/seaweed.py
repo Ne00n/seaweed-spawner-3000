@@ -71,6 +71,11 @@ class SeaweedFS:
         config = T.genSystemd('filer',data['vpn'],9533,'dir','master',9333,self.targets)
         self.cmd(data['ip'],'echo "'+config+'" > /etc/systemd/system/SeaweedFSfiler.service && systemctl enable SeaweedFSfiler && systemctl start SeaweedFSfiler')
 
+        if "mount" in data:
+            print('Creating & Starting SeaweedFS mount systemd service')
+            config = T.genSystemd('mount',data['vpn'],9533,'dir','master',0,self.targets,data['mount']['dir'],data['mount']['filer'])
+            self.cmd(data['ip'],'echo "'+config+'" > /etc/systemd/system/SeaweedFSmount.service && systemctl enable SeaweedFSmount && systemctl start SeaweedFSmount')
+
     def run(self):
         print("Launching")
         time.sleep(3)
