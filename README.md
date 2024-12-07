@@ -13,7 +13,8 @@ none
 Rename hosts.example.json to hosts.json and fill it up<br>
 <b>Make sure you have an odd number of nodes</b>
 
-Regarding replication you can check the docs: https://github.com/seaweedfs/seaweedfs/wiki/Replication#the-meaning-of-replication-type
+Regarding replication you can check the docs<br>
+https://github.com/seaweedfs/seaweedfs/wiki/Replication#the-meaning-of-replication-type
 
 **Usage**<br />
 Builds or Updates the SeaweedFS cluster<br />
