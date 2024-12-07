@@ -1,5 +1,5 @@
 {
-  "replica":"001",
+  "replica":"100",
   "version":"3.80",
   "disableHttp":false,
   "servers":{
